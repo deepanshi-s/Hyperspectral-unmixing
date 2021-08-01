@@ -6,12 +6,7 @@ import pysptools.eea as eea
 import pysptools.abundance_maps as amp
 import matplotlib.pyplot as plt
 import numpy as np
-import cvxopt
 import scipy.io as spio
-from sklearn import *
-from sklearn.neural_network import  *
-from sklearn.neural_network import MLPClassifier
-from sklearn.model_selection import train_test_split
 from spectral import *
 
 
@@ -23,7 +18,7 @@ arr = np.array(arr)
 
 
 
-#read endmember 1 
+#read endmember 1 from txt file 
 file1 = open('residue_em.txt', 'r') 
 Lines = file1.readlines() 
 import numpy as np
@@ -102,22 +97,3 @@ h = h[:,1:]
 print(h.shape)
 
 
-#ucls unmixing
-ucls = amp.UCLS()
-amap = ucls.map(arr, h, normalize = False, mask= None)
-print(amap.shape)
-ucls.display(mask=None, interpolation='none', colorMap='jet', suffix=None)
-
-
-#nnls unmixing
-nnls = amp.NNLS()
-amap1 = nnls.map(arr, h, normalize = False, mask= None)
-print(amap1.shape)
-nnls.display(mask=None, interpolation='none', colorMap='jet', columns=10, suffix=None)
-
-
-#fcls unmixing
-fcls = amp.FCLS()
-amap2 = fcls.map(arr, h, normalize=False, mask=None)
-print(amap2.shape)
-fcls.display(mask=None, interpolation='none', colorMap='jet', columns=5, suffix=None)
