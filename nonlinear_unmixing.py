@@ -16,7 +16,7 @@ from spectral import *
 import spectral.io.envi as envi
 
 #load the envi files
-img = envi.open('samson.hdr', 'samson_1.img')
+img = envi.open('samson//samson.hdr', 'samson//samson_1.img')
 print(img)
 arr = img.load()
 print(arr.__class__)
